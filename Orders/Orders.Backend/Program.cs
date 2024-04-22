@@ -15,6 +15,7 @@ var app = builder.Build();
 
 app.UseCors(x => x
 .AllowAnyMethod()
+.AllowAnyHeader()
 .SetIsOriginAllowed(origin => true)
 .AllowCredentials());
 
