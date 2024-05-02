@@ -13,6 +13,7 @@ builder.Services.AddDbContext<DataContext>(x => x.UseSqlServer("name=LocalConnec
 
 var app = builder.Build();
 
+//Permite el consumo desde el frontend
 app.UseCors(x => x
 .AllowAnyMethod()
 .AllowAnyHeader()
