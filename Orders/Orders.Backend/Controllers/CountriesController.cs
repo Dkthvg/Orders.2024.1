@@ -11,6 +11,7 @@ namespace Orders.Backend.Controllers
     public class CountriesController : ControllerBase
     {
         private readonly DataContext _context;
+
         public CountriesController(DataContext context)
         {
             _context = context;
@@ -19,15 +20,14 @@ namespace Orders.Backend.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAsync()
         {
-           
-            return Ok(await _context.Countries.ToListAsync());
+            return Ok(await _context.Countries.AsNoTracking().ToListAsync());
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAsync(int id)
         {
             var country = await _context.Countries.FindAsync(id);
-            if(country== null)
+            if (country == null)
             {
                 return NotFound();
             }
